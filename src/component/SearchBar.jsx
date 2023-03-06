@@ -25,7 +25,7 @@ setSearchTerm("")
     }}
     >
         <input className='search-bar' placeholder='Search...' value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}}/>
-        <IconButton >
+        <IconButton type="submit" sx={{p:"10px",color:"red"}}>
             <Search />
         </IconButton>
 
