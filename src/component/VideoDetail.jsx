@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { fetchAsyncDetails, fetchAsyncVideos, getAllDetails, getAllVideos, getLoading, removeDetails, removeVideos } from '../features/videos/videoSlice';
+import LoadingSpinner from './LoadingSpinner';
 import Videos from './Videos';
 
 const VideoDetail = () => {
@@ -28,7 +29,10 @@ const VideoDetail = () => {
   }, [id,dispatch]);
   return(
     <Box minHeight="95vh">
-     {isloading ? <div style={{color:"white",textAlign:"center",marginTop:"100px"}}>Loading...</div> :  <Stack direction={{xs:'column',md:'row'}}>
+     {isloading ? <LoadingSpinner /> 
+    //  <div style={{color:"white",textAlign:"center",marginTop:"100px"}}>Loading...</div> 
+     :  
+     <Stack direction={{xs:'column',md:'row'}}>
         <Box flex={1}>
           <Box sx={{width:'100%',position:'sticky',top:'86px'}}>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls/>

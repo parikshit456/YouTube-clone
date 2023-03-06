@@ -5,10 +5,12 @@ import Sidebar from './Sidebar'
 import Videos from './Videos'
 import {fetchFromApi} from '../utils/fetchFromApi'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAsyncVideos, getAllVideos, getSelectedCategory, removeVideos } from '../features/videos/videoSlice'
+import { fetchAsyncVideos, getAllVideos, getLoading, getSelectedCategory, removeVideos } from '../features/videos/videoSlice'
+import LoadingSpinner from './LoadingSpinner'
 
 const Feed = () => {
     const selectedCategory = useSelector(getSelectedCategory)
+    const isloading = useSelector(getLoading);
 
     // console.log(selectedCategory)
     const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const Feed = () => {
             dispatch(removeVideos())
           }
     }, [selectedCategory,dispatch]);
-  return (
+  return isloading ? <LoadingSpinner /> : (
     <Stack sx={{
         flexDirection:{sx:"column",md:"row"}
     }}>

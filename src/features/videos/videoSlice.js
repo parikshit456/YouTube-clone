@@ -32,7 +32,7 @@ const initialState = {
   videos: {},
   details: {},
   selectedCategory: "New",
-  isLoading: true,
+  isLoading: false,
 };
 
 const videoSlice = createSlice({
@@ -60,7 +60,14 @@ const videoSlice = createSlice({
     [fetchAsyncVideos.fulfilled]: (state, { payload }) => {
       return {
         ...state,
+        isLoading: false,
         videos: payload,
+      };
+    },
+    [fetchAsyncVideos.pending]: (state) => {
+      return {
+        ...state,
+        isLoading: true,
       };
     },
     [fetchAsyncDetails.fulfilled]: (state, { payload }) => {

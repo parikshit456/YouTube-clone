@@ -2,13 +2,15 @@ import { Box } from '@mui/material';
 import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { fetchAsyncDetails, fetchAsyncVideos, getAllVideos,getAllDetails, removeVideos, removeDetails } from '../features/videos/videoSlice';
+import { fetchAsyncDetails, fetchAsyncVideos, getAllVideos,getAllDetails, removeVideos, removeDetails, getLoading } from '../features/videos/videoSlice';
 import ChannelCard from './ChannelCard';
+import LoadingSpinner from './LoadingSpinner';
 import Videos from './Videos';
 
 const ChannelDetail = () => {
   const {id} = useParams();
   const channelDetail = useSelector(getAllDetails);
+  const isLoading = useSelector(getLoading);
   console.log(channelDetail);
 
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const ChannelDetail = () => {
     }
 
   }, [id,dispatch]);
-  return (        
+  return isLoading ? <LoadingSpinner /> : (        
     <Box minHeight="95vh">
       <Box>
         <div style={{
