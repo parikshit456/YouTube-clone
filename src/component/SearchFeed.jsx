@@ -12,6 +12,10 @@ const {searchTerm} = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
       dispatch(fetchAsyncVideos(`search?part=snippet&q=${searchTerm}`))
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
       dispatch(removeVideos());
   }, [searchTerm]);
   return (

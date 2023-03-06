@@ -17,6 +17,10 @@ const VideoDetail = () => {
   useEffect(() => {
     dispatch(fetchAsyncDetails(`videos?part=snippet,statistics&id=${id}`))
     dispatch(fetchAsyncVideos(`search?part=snippet&relatedToVideoId=${id}&type=video`))
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+  });
     return ()=>{
       dispatch(removeVideos())
       dispatch(removeDetails())

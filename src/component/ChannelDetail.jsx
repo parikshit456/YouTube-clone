@@ -15,6 +15,10 @@ const ChannelDetail = () => {
   useEffect(() => {
     dispatch(fetchAsyncDetails(`channels?part=snippet&id=${id}`))
     dispatch(fetchAsyncVideos(`search?channelId=${id}&part=snippet&order=date`))
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+  });
     return ()=>{
       dispatch(removeVideos())
       dispatch(removeDetails())

@@ -1,0 +1,15 @@
+{
+    "short_name": "YouTube-Clone",
+    "name": "YouTube-Clone",
+    "icons": [
+      {
+        "src": "https://i.ibb.co/s9Qys2j/logo.png",
+        "type": "image/png",
+        "sizes": "250x250",
+        "purpose" : "any maskable"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "prefer_related_applications" : true
+  }

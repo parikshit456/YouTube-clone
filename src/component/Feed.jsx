@@ -21,6 +21,10 @@ const Feed = () => {
     console.log(selectedCategory)
 
         dispatch(fetchAsyncVideos(`search?part=snippet&q=${selectedCategory}`))
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+      });
         return ()=>{
             dispatch(removeVideos())
           }
